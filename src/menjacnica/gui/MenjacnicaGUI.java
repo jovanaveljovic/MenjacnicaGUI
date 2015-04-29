@@ -124,6 +124,11 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnDodajKurs() {
 		if (btnDodajKurs == null) {
 			btnDodajKurs = new JButton("Dodaj kurs");
+			btnDodajKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					dodajKurs();
+				}
+			});
 			btnDodajKurs.setPreferredSize(new Dimension(115, 27));
 		}
 		return btnDodajKurs;
@@ -277,6 +282,11 @@ public class MenjacnicaGUI extends JFrame {
 	private JMenuItem getMntmDodajKurs() {
 		if (mntmDodajKurs == null) {
 			mntmDodajKurs = new JMenuItem("Dodaj kurs");
+			mntmDodajKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					dodajKurs();
+				}
+			});
 		}
 		return mntmDodajKurs;
 	}
@@ -333,14 +343,20 @@ public class MenjacnicaGUI extends JFrame {
 		}
 	
 	private void exit(){
-		int option = JOptionPane.showConfirmDialog(contentPane, "Da li zelite da izadjete iz programa?", "Exit Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
+		int option = JOptionPane.showConfirmDialog(contentPane, "Da li zelite da izadjete iz programa?", 
+				"Exit Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
 		
 		if(option== JOptionPane.YES_OPTION){
 			System.exit(0);
 		}
 	}
 	
+	private void dodajKurs(){
+		DodajKursGui prozor = new DodajKursGui(this);
+		prozor.setLocationRelativeTo(contentPane);
+		prozor.setVisible(true);
 
-	
+
+	}
 	
 }
